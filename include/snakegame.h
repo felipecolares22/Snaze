@@ -1,6 +1,11 @@
 #ifndef SNAKEGAME_H
 #define SNAKEGAME_H
 
+#include "snake.h"
+#include "level.h"
+#include "player.h"
+#include "prints.h"
+
 /*! \class Snakegame
 	\brief The main entity that instatiates all other objects and manages the game execution.
 
@@ -14,7 +19,6 @@ class Snakegame
 
 	public:
 		//=== Methods
-		///
 		initialize_game();
 
 		update();
@@ -24,24 +28,4 @@ class Snakegame
 		renders();
 
 		game_over();
-
-	private:
-		/*! \class Snake
-			\brief Represents the snake and its attributes.
-		
-		*/
-		class Snake
-		{
-
-		}
-
-		class Level
-		{
-
-		}
-
-		class Player
-		{
-
-		}
-}
+};
