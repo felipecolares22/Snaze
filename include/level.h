@@ -6,7 +6,6 @@
 #include <vector>
 #include <stdexcept> //throw
 
-#include "input.h"
 
 /*! \class Level
 	\brief Represents a level of the game.
@@ -40,7 +39,7 @@ class Level
 		void get_level();
 
 		/// Verify and save the input file
-		void get_input();
+		void get_input(int argc, char* argv[]);
 		
 }; //Level class
 

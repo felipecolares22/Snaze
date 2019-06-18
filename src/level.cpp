@@ -48,7 +48,7 @@
 }*/
 
 /// get_input method implementation
-void Level::get_input()
+void Level::get_input(int argc, char* argv[])
 {
 	// checking if input argument is valid
 	if(argc > 2)

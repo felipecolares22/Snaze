@@ -3,6 +3,10 @@
 
 #include <iostream>
 #include <string>
+#include <iomanip>
+#include <sys/ioctl.h>
+#include <unistd.h>
+#include <fstream>
 
 /// Prints the game main menu.
 void printmenu(int loaded_levels, int starting_lives, int food_to_eat);

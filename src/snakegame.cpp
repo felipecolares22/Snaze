@@ -1,2 +1,2 @@
-#include "Snakegame.h"
+#include "snakegame.h"
 
