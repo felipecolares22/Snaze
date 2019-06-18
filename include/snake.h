@@ -1,5 +1,7 @@
 #include <iostream>
 
+#include "prints.h"
+
 /*! \class Snake
 	\brief Represents the snake and its attributes.
 
@@ -42,7 +44,7 @@ class snake
 		//=== Methods
 		/// Adds a new piece to the snake body.
 		/* TO DO: store the correct values to new bodypart x and y.
-		grow_snake()
+		void grow_snake()
 		{
 			while(head->next != nullptr)
 			{

@@ -4,7 +4,6 @@
 #include "snake.h"
 #include "level.h"
 #include "player.h"
-#include "prints.h"
 
 /*! \class Snakegame
 	\brief The main entity that instatiates all other objects and manages the game execution.
