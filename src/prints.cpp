@@ -10,7 +10,8 @@ void printmenu( int loaded_levels, int starting_lives, int food_to_eat )
 			 << std::setw((size.ws_row-25)/2) << std::setfill(' ') << "copyright DIMap/UFRN 2017" << std::endl
 			 << std::setw(size.ws_row) << std::setfill('-') << std::endl
 			 << std::setw(size.ws_row) << std::setfill(' ') << "Levels Loaded: " << loaded_levels << " | Snake lives: " << starting_lives << " | Apples to eat: " << food_to_eat << std::endl
-			 << std::setw((size.ws_row-)/2) << std::setfill(' ') << "Clear all levels to win the game. Good Luck!!!" << std::endl;
+			 << std::setw((size.ws_row-46)/2) << std::setfill(' ') << "Clear all levels to win the game. Good Luck!!!" << std::endl
+			 << std::setw((size.ws_row-40)/2) << std::setfill(' ') << ">>> Press <ENTER> to start the game! <<<" << std::endl;
 }
 
 /// Prints the status of the actual run.
