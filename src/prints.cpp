@@ -25,16 +25,6 @@ void printstatus( int lives, size_t score, int food_eaten, int food_to_eat, int 
 /// Prints the game itself (maze+snake).
 void printgame();
 
-/// Prints error messages
-void print_errors( std::string error )
-{
-	if( error == "many arguments" )
-		std::cout << "Too many arguments, rerun the program with a valid number of arguments\n";
-	
-	else if( error == "invalid level size" )
-		std::cout << " ERROR: Invalid level size\n";
-}
-
 /// Prints the end game screens (crashing into a wall, losing all lives)
 void printendgame( int lives );
 

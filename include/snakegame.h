@@ -28,3 +28,5 @@ class Snakegame
 
 		game_over();
 };
+
+#endif

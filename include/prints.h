@@ -4,14 +4,16 @@
 #include <iostream>
 #include <string>
 
+/// Prints the game main menu.
 void printmenu(int loaded_levels, int starting_lives, int food_to_eat);
 
+/// Prints the status of the actual run.
 void printstatus(int lives, size_t score, int food, int food_to_eat);
 
+/// Prints the game itself (maze+snake).
 void printgame();
 
-void print_errors(std::string error);
-
+/// Prints the end game screens (crashing into a wall, losing all lives)
 void printendgame(std::string cause);
 
 #endif
