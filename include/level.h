@@ -2,7 +2,7 @@
 #include <utility>
 #include <vector>
 
-#include "prints.h"
+#include "input.h"
 
 /*! \class Level
 	\brief Represents a level of the game.
@@ -36,11 +36,17 @@ class Level
 		/*
 		void get_level()
 		{
+			int count{0};
 			level_info aux;
 			while( std::cin >> aux.dimensions.first >> aux.dimensions.second )
-			{
+			{	
+				std::cout<< "Level number " << count << ": ";
+				count++
+
 				if( aux.rows > 0 and aux.columns > 0 )
 				{
+					std::cout << "Accepted!\n";
+
 					//creating the auxiliar matrix
 					aux.matrix = new char*[aux.rows];
 					for( int i=0 ; i < aux.rows ; i++ )
@@ -68,7 +74,7 @@ class Level
 				}
 				else
 				{
-					print_errors("invalid level size");
+					print_errors("invalid level size", );
 					delete aux;
 				}
 			}
