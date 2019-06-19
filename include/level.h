@@ -37,10 +37,10 @@ class Level
 
 		//=== Methods
 		/// Verify and save the input file
-		std::string get_input(int argc, char* argv[]);
+		void get_input( int argc, char* argv[] );
 
 		/// Stores all level information in a structure then alocated in a vector.
-		void get_level();
+		void get_level( std::string file_name );
 		
 }; //Level class
 

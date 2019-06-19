@@ -1,32 +1,32 @@
 #include "level.h"
 
 /// get_input method implementation
-std::string Level::get_input(int argc, char* argv[])
+void Level::get_input( int argc, char* argv[] )
 {
 	// checking if input argument is valid
 	if(argc > 2)
-		throw std::invalid_argument("many arguments");
+		throw std::invalid_argument( "many arguments" );
 	else
 	{
 		std::string file_name;
 		file_name = argv[1];
-		return file_name;
+
+		Level::get_level( file_name );
 	}
+
 	//TODO: Read and save input file
 }
 
 /// get_level method implementation
-void Level::get_level()
+void Level::get_level( std::string file_name )
 {
-	std::string file_name;
-	file_name = Level::get_input(argc, argv[]);
 
 	std::fstream inFile;
-	inFile.open(file_name, std::fstream::in);
+	inFile.open( file_name, std::fstream::in );
 
-	if(inFile.fail())
+	if( inFile.fail() )
 	{
-		throw std::runtime_error("Error opening file");
+		throw std::runtime_error( "Error opening file" );
 		return;
 	}
 
@@ -36,28 +36,28 @@ void Level::get_level()
 	while( inFile >> aux.dimensions.first >> aux.dimensions.second )
 	{	
 		std::cout<< "Level number " << count << ": ";
-		count++
+		count++;
 
 		if( aux.dimensions.first > 0 and aux.dimensions.second > 0 )
 		{
 			std::cout << "Accepted!\n";
 
 			//creating the auxiliar matrix
-			aux.matrix = new char*[aux.rows];
-			for( int i=0 ; i < aux.rows ; i++ )
+			aux.matrix = new char*[aux.dimensions.first];
+			for( int i=0 ; i < aux.dimensions.first ; i++ )
 			{
-				matrix[i] = new char[aux.columns];
+				aux.matrix[i] = new char[aux.dimensions.second];
 			}
 
 			//alocating the level on the auxiliar matrix
-			for( int i = 0 ; i < aux.rows ; i++)
+			for( int i = 0 ; i < aux.dimensions.first ; i++)
 			{
-				for( int j = 0 ; j < aux.columns ; j++)
+				for( int j = 0 ; j < aux.dimensions.second	 ; j++)
 				{
-					inFile.get(matrix[i][j]);
+					inFile.get(aux.matrix[i][j]);
 
 					//storing spawn_point location
-					if(matrix[i][j] == '*')
+					if( aux.matrix[i][j] == '*' )
 					{
 						aux.spawn_point.first = i;
 						aux.spawn_point.second = j;
@@ -65,12 +65,14 @@ void Level::get_level()
 				}
 			}
 
-			levels.push_back(aux);
+			levels.push_back( aux );
 		}
 		else
 		{
+			/*
 			print_errors("invalid level size", );
 			delete aux;
+			*/
 		}
 	}
 }
