@@ -1,16 +1,44 @@
 #include "level.h"
 
-/// get_level method implementation
-/*void Level::get_level()
+/// get_input method implementation
+std::string Level::get_input(int argc, char* argv[])
 {
+	// checking if input argument is valid
+	if(argc > 2)
+		throw std::invalid_argument("many arguments");
+	else
+	{
+		std::string file_name;
+		file_name = argv[1];
+		return file_name;
+	}
+	//TODO: Read and save input file
+}
+
+/// get_level method implementation
+void Level::get_level()
+{
+	std::string file_name;
+	file_name = Level::get_input(argc, argv[]);
+
+	std::fstream inFile;
+	inFile.open(file_name, std::fstream::in);
+
+	if(inFile.fail())
+	{
+		throw std::runtime_error("Error opening file");
+		return;
+	}
+
 	int count{0};
 	level_info aux;
-	while( std::cin >> aux.dimensions.first >> aux.dimensions.second )
+
+	while( inFile >> aux.dimensions.first >> aux.dimensions.second )
 	{	
 		std::cout<< "Level number " << count << ": ";
 		count++
 
-		if( aux.rows > 0 and aux.columns > 0 )
+		if( aux.dimensions.first > 0 and aux.dimensions.second > 0 )
 		{
 			std::cout << "Accepted!\n";
 
@@ -26,7 +54,7 @@
 			{
 				for( int j = 0 ; j < aux.columns ; j++)
 				{
-					std::cin>>matrix[i][j];
+					inFile.get(matrix[i][j]);
 
 					//storing spawn_point location
 					if(matrix[i][j] == '*')
@@ -45,14 +73,4 @@
 			delete aux;
 		}
 	}
-}*/
-
-/// get_input method implementation
-void Level::get_input(int argc, char* argv[])
-{
-	// checking if input argument is valid
-	if(argc > 2)
-		throw std::invalid_argument("many arguments");
-
-	//TODO: Read and save input file
 }

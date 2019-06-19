@@ -2,9 +2,10 @@
 #define LEVEL_H
 
 #include <iostream>
-#include <utility>
-#include <vector>
+#include <utility> //std::pair
+#include <vector> //std::vector
 #include <stdexcept> //throw
+#include <fstream> //ifstream
 
 
 /*! \class Level
@@ -35,11 +36,11 @@ class Level
 		~Level();
 
 		//=== Methods
+		/// Verify and save the input file
+		std::string get_input(int argc, char* argv[]);
+
 		/// Stores all level information in a structure then alocated in a vector.
 		void get_level();
-
-		/// Verify and save the input file
-		void get_input(int argc, char* argv[]);
 		
 }; //Level class
 
