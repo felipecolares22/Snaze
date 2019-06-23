@@ -1,7 +1,7 @@
 #ifndef LEVEL_H
 #define LEVEL_H
 
-#include <iostream>
+#include <iostream> //std::cout & std::cin
 #include <utility> //std::pair
 #include <vector> //std::vector
 #include <stdexcept> //throw
@@ -30,10 +30,12 @@ class Level
 	public:
 		//=== Constructors/Destructors
 		/// Default constructor.
-		Level();
+		Level()
+		{/*Empty*/}
 
 		/// Default destructor.
-		~Level();
+		~Level()
+		{/*Empty*/}
 
 		//=== Methods
 		/// Verify and save the input file
@@ -41,6 +43,9 @@ class Level
 
 		/// Stores all level information in a structure then alocated in a vector.
 		void get_level( std::string file_name );
+
+		/// Prints the levels vector
+		void print_level( );
 		
 }; //Level class
 

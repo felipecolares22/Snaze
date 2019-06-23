@@ -30,7 +30,7 @@ void Level::get_level( std::string file_name )
 		return;
 	}
 
-	int count{0};
+	int count{1};
 	level_info aux;
 
 	while( inFile >> aux.dimensions.first >> aux.dimensions.second )
@@ -74,5 +74,23 @@ void Level::get_level( std::string file_name )
 			delete aux;
 			*/
 		}
+	}
+}
+
+/// print_level method implementation
+void Level::print_level( )
+{
+	for( int i = 0 ; i < (int)levels.size() ; i++ )
+	{
+		std::cout<< std::endl << levels[i].dimensions.first << " " << levels[i].dimensions.second;
+		for( int j = 0 ; j < levels[i].dimensions.first ; j++ )
+		{
+			for( int k = 0 ; k < levels[i].dimensions.second ; k++ )
+			{
+				std::cout<< levels[i].matrix[j][k];
+			}
+			std::cout<< std::endl;
+		}
+		std::cout<< std::endl;
 	}
 }

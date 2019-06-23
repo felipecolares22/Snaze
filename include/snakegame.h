@@ -1,7 +1,7 @@
 #ifndef SNAKEGAME_H
 #define SNAKEGAME_H
 
-#include "snake.h"
+//#include "snake.h"
 #include "level.h"
 // #include "player.h"
 
@@ -12,13 +12,22 @@
 class Snakegame
 {
 	private:
-		Snake snake;
+	//	Snake snake;
 		Level level;
 		// Player player;
 
 	public:
+		//=== Constructors / Destructor
+		/// Default destructor
+		Snakegame()
+		{/*Empty*/}
+
+		/// Default destructor
+		~Snakegame()
+		{/*Empty*/}
+
 		//=== Methods
-		/*initialize_game();*/
+		void initialize_game(int argc, char* argv[]);
 
 		/*update();*/
 
@@ -27,6 +36,8 @@ class Snakegame
 		/*renders();*/
 
 		/*game_over();*/
+
+
 };
 
 #endif
