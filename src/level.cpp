@@ -21,7 +21,7 @@ void Level::get_input( int argc, char* argv[] )
 void Level::get_level( std::string file_name )
 {
 
-	std::fstream inFile;
+	std::ifstream inFile;
 	inFile.open( file_name, std::fstream::in );
 
 	if( inFile.fail() )
@@ -38,7 +38,8 @@ void Level::get_level( std::string file_name )
 		std::cout<< "Level number " << count << ": ";
 		count++;
 
-		if( aux.dimensions.first > 0 and aux.dimensions.second > 0 )
+		if( aux.dimensions.first > 0 and aux.dimensions.second > 0
+			and aux.dimensions.first <= 100 and aux.dimensions.second <= 100)
 		{
 			std::cout << "Accepted!\n";
 
@@ -50,11 +51,15 @@ void Level::get_level( std::string file_name )
 			}
 
 			//alocating the level on the auxiliar matrix
+			std::string inputLine;
+			std::getline(inFile, inputLine); // trash
 			for( int i = 0 ; i < aux.dimensions.first ; i++)
 			{
-				for( int j = 0 ; j < aux.dimensions.second	 ; j++)
+				std::getline(inFile, inputLine);
+
+				for( int j = 0 ; j < aux.dimensions.second ; j++)
 				{
-					inFile.get(aux.matrix[i][j]);
+					aux.matrix[i][j] = inputLine[j];
 
 					//storing spawn_point location
 					if( aux.matrix[i][j] == '*' )
@@ -82,7 +87,7 @@ void Level::print_level( )
 {
 	for( int i = 0 ; i < (int)levels.size() ; i++ )
 	{
-		std::cout<< std::endl << levels[i].dimensions.first << " " << levels[i].dimensions.second;
+		std::cout<< std::endl << levels[i].dimensions.first << " " << levels[i].dimensions.second << std::endl;
 		for( int j = 0 ; j < levels[i].dimensions.first ; j++ )
 		{
 			for( int k = 0 ; k < levels[i].dimensions.second ; k++ )
