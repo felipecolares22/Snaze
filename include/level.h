@@ -25,9 +25,10 @@ class Level
 			char** matrix;
 			std::pair< int, int > spawn_point;
 		};
-		std::vector<level_info> levels; //!< Vector containing all inputed levels.
 
 	public:
+		std::vector<level_info> levels; //!< Vector containing all inputed levels.
+
 		//=== Constructors/Destructors
 		/// Default constructor.
 		Level()
@@ -45,10 +46,12 @@ class Level
 		void get_level( std::string file_name );
 
 		/// Prints the levels vector
-		void print_level( );
+		void print_level( int a = -1 );
 
 		/// Returns the size of the vector
 		int num_levels( );
+
+
 		
 }; //Level class
 

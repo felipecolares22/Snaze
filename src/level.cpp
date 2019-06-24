@@ -81,16 +81,32 @@ void Level::get_level( std::string file_name )
 }
 
 /// print_level method implementation
-void Level::print_level( )
+void Level::print_level( int a )
 {
-	for( int i = 0 ; i < (int)levels.size() ; i++ )
+	if(a == -1)
 	{
-		std::cout<< std::endl << levels[i].dimensions.first << " " << levels[i].dimensions.second << std::endl;
-		for( int j = 0 ; j < levels[i].dimensions.first ; j++ )
+		for( int i = 0 ; i < (int)levels.size() ; i++ )
 		{
-			for( int k = 0 ; k < levels[i].dimensions.second ; k++ )
+			std::cout<< std::endl << levels[i].dimensions.first << " " << levels[i].dimensions.second << std::endl;
+			for( int j = 0 ; j < levels[i].dimensions.first ; j++ )
 			{
-				std::cout<< levels[i].matrix[j][k];
+				for( int k = 0 ; k < levels[i].dimensions.second ; k++ )
+				{
+					std::cout<< levels[i].matrix[j][k];
+				}
+				std::cout<< std::endl;
+			}
+			std::cout<< std::endl;
+		}
+	}
+	else
+	{
+		std::cout<< std::endl << levels[a].dimensions.first << " " << levels[a].dimensions.second << std::endl;
+		for( int j = 0 ; j < levels[a].dimensions.first ; j++ )
+		{
+			for( int k = 0 ; k < levels[a].dimensions.second ; k++ )
+			{
+				std::cout<< levels[a].matrix[j][k];
 			}
 			std::cout<< std::endl;
 		}
