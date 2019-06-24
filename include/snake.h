@@ -3,6 +3,7 @@
 
 #include <iostream>
 
+#include "level.h"
 #include "prints.h"
 
 /*! \class Snake
@@ -12,6 +13,7 @@
 class Snake
 {
 	private:
+		Level level;
 		struct bodypart //!< Linked list representing the snake's body
 		{
 			int x;
@@ -19,19 +21,20 @@ class Snake
 			bodypart* next;
 			bodypart* prev;
 		};
-		bodypart* head; //!< Pointer to the Snake's head.
 
 	public:
+		bodypart* head; //!< Pointer to the Snake's head.
+		
 		//=== Constructors/Destructors
 		/// Default constructor.
-		Snake(int spawn_x, int spawn_y);
+		Snake();
 
 		/// Default destructor.
-		~Snake();
+		~Snake( );
 
 		//=== Methods
 		/// Adds a new piece to the snake body.
-		void grow_snake();
+		void grow_snake( );
 		
 }; //Snake class
 

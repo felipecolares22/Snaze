@@ -1,7 +1,8 @@
 #include "player.h"
 
-bool Player::find_solution( std::pair< int, int > food_loc, std::pair< int, int > player_loc, char** matrix )
+bool Player::find_solution( std::pair< int, int > food_loc, std::pair< int, int > player_loc, Level & level, int l_num )
 {	
+
 	// cleaning deque
 	this->foodWay.clear();
 
@@ -18,46 +19,46 @@ bool Player::find_solution( std::pair< int, int > food_loc, std::pair< int, int 
 		std::pair< int, int > aux;
 		bool findOutlet = false;
 		{
-			if( matrix[current.first + 1][current.second] == ' ' and visited.count( std::make_pair(current.first + 1, current.second) ) == 0)
+			if( level[l_num].matrix[current.first + 1][current.second] == ' ' and visited.count( std::make_pair(current.first + 1, current.second) ) == 0)
 			{
 				findOutlet = true;
 				aux = std::make_pair(current.first + 1, current.second);
 			}
-			else if( matrix[current.first - 1][current.second] == ' ' and visited.count( std::make_pair(current.first - 1, current.second) ) == 0)
+			else if( level[l_num].matrix[current.first - 1][current.second] == ' ' and visited.count( std::make_pair(current.first - 1, current.second) ) == 0)
 			{
 				findOutlet = true;
 				aux = std::make_pair(current.first - 1, current.second);
 			}
-			else if( matrix[current.first][current.second + 1] == ' ' and visited.count( std::make_pair(current.first, current.second + 1) ) == 0)
+			else if( level[l_num].matrix[current.first][current.second + 1] == ' ' and visited.count( std::make_pair(current.first, current.second + 1) ) == 0)
 			{
 				findOutlet = true;
 				aux = std::make_pair(current.first, current.second + 1);
 			}
-			else if( matrix[current.first][current.second - 1] == ' ' and visited.count( std::make_pair(current.first, current.second - 1) ) == 0)
+			else if( level[l_num].matrix[current.first][current.second - 1] == ' ' and visited.count( std::make_pair(current.first, current.second - 1) ) == 0)
 			{
 				findOutlet = true;
 				aux = std::make_pair(current.first, current.second - 1);
 			}
 			// ----------------------------------
-			if( matrix[current.first + 1][current.second] == 'f')
+			if( level[l_num].matrix[current.first + 1][current.second] == 'f')
 			{
 				aux = std::make_pair(current.first + 1, current.second);
 				this->foodWay.push_back(aux);
 				break;
 			}
-			else if( matrix[current.first - 1][current.second] == 'f')
+			else if( level[l_num].matrix[current.first - 1][current.second] == 'f')
 			{
 				aux = std::make_pair(current.first - 1, current.second);
 				this->foodWay.push_back(aux);
 				break;
 			}
-			else if( matrix[current.first][current.second + 1] == 'f')
+			else if( level[l_num].matrix[current.first][current.second + 1] == 'f')
 			{
 				aux = std::make_pair(current.first, current.second + 1);
 				this->foodWay.push_back(aux);
 				break;
 			}
-			else if( matrix[current.first][current.second - 1] == 'f')
+			else if( level[l_num].matrix[current.first][current.second - 1] == 'f')
 			{
 				aux = std::make_pair(current.first, current.second - 1);
 				this->foodWay.push_back(aux);
@@ -79,4 +80,15 @@ bool Player::find_solution( std::pair< int, int > food_loc, std::pair< int, int 
 	}
 
 	return true;
+}
+
+std::pair< int, int > gen_food( Level & level, int l_num )
+{
+	std::srand(std::time(nullptr));
+	while( level.levels[l_num][food_pos.first][food_pos.second] != ' ' )
+	{
+		food_pos.first = std::rand();
+		food_post.second = std::rand();
+	}
+	level.levels[l_num][food_pos.first][food_pos.second] == 'f'
 }

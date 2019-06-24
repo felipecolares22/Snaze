@@ -2,19 +2,20 @@
 
 
 /// Snake default constructor implemetation
-Snake::Snake(int spawn_x, int spawn_y)
+Snake::Snake()
 {
 	head = new bodypart;
-	head->x = spawn_x;
-	head->y = spawn_y;
-	head->prev = nullptr;
+	head->x = level.levels[0].spawn_point.first;
+	head->y = level.levels[0].spawn_point.second;
 	head->next = nullptr;
+	head->prev = nullptr;
+
 }
 
 /// Snake destructor implementation
-Snake::~Snake()
+Snake::~Snake( )
 {
-	while(head->next != nullptr)
+	while( head->next != nullptr )
 	{
 		head = head->next;
 		delete head->prev;

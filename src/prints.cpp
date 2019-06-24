@@ -8,7 +8,7 @@ void printstatus( int lives, size_t score, int food_eaten, int food_to_eat, int 
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
 	// TODO: put '♥' instead of '?'
 	std::cout << std::setw(size.ws_col) << std::setfill('-') << "" << std::endl << std::endl
-			  << std::setw( (size.ws_col-70)/2) << std::setfill(' ') << "" << "Lives: " << std::setw(lives) << std::setfill('?') << "" << " | Score: " << score << " | Food eaten: " << food_eaten << " out of " << food_to_eat << " | Current Level: " << current_level << std::endl
+			  << std::setw( (size.ws_col-70)/2) << std::setfill(' ') << "" << "Lives: " << std::setw(lives) << std::setfill('@') << "" << " | Score: " << score << " | Food eaten: " << food_eaten << " out of " << food_to_eat << " | Current Level: " << current_level << std::endl
 			  << std::setw(size.ws_col) << std::setfill('-') << "" << std::endl;
 }
 
@@ -33,6 +33,23 @@ void printmenu( int loaded_levels, int starting_lives, size_t score, int food_to
 /// Prints the game itself (maze+snake).
 void printgame();
 
+void printnextlevel( int score )
+{
+	system("clear");
+	struct winsize size;
+	ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
+
+	for( int i = 0 ; i < size.ws_row/2 ; i++ )
+	{
+		std::cout<<std::endl;
+	}
+	std::cout<< std::setw( (size.ws_col-23) / 2 ) << std::setfill(' ') << "" << ">>> Level Completed <<<\n";
+	std::cout<< std::setw( (size.ws_col-11) / 2 ) << std::setfill(' ') << "" << "Score: " << score << std::endl;
+	std::cout<< std::setw( (size.ws_col-43) / 2 ) << std::setfill(' ') << "" << ">>> Press enter to start the next level <<<" << score << std::endl;
+	getchar();
+	system("clear");
+}
+
 /// Prints the end game screens (crashing into a wall, losing all lives)
 void printendgame( int score )
 {
@@ -45,7 +62,7 @@ void printendgame( int score )
 		std::cout<<std::endl;
 	}
 	std::cout<< std::setw( (size.ws_col-16) / 2 ) << std::setfill(' ') << "" << ">>> END GAME <<<\n";
-	std::cout<< std::setw( (size.ws_col-11) / 2 ) << std::setfill(' ') << "" << "Score: " << score << std::endl;
+	std::cout<< std::setw( (size.ws_col-17) / 2 ) << std::setfill(' ') << "" << "Final score: " << score << std::endl;
 	getchar();
 	system("clear");
 }

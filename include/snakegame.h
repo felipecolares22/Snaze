@@ -17,28 +17,34 @@ class Snakegame
 		Level level;
 		Player player;
 		size_t score = 0; //!< Stores the game score
+		int current_level = 0; //!< Stores the number of the current running level.
+		int lives = 10;
+		int food_eaten = 0;
+		int food_to_eat = 10;
 
 	public:
 		//=== Constructors / Destructor
 		/// Default destructor
-		Snakegame()
+		Snakegame( )
 		{/*Empty*/}
 
 		/// Default destructor
-		~Snakegame()
+		~Snakegame( )
 		{/*Empty*/}
 
 		//=== Methods
 		/// Initializes the game
-		void initialize_game(int argc, char* argv[]);
+		void initialize_game( int argc, char* argv[] );
 
 		/*update();*/
 
-		/*process_events();*/
+		void process_events( Level & level , Player & player );
 
-		/*renders();*/
+		/// Prints Status + Maze + Snake
+		void render( Level & level );
 
-		void game_over();
+		/// Checks if game is over, if it is, it prints the endgame screen and returns true, else returns false
+		bool game_over();
 
 
 };// Snakegame class

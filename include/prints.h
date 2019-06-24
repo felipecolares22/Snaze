@@ -15,7 +15,10 @@ void printstatus( int lives, size_t score, int food, int food_to_eat, int curren
 void printmenu( int loaded_levels, int starting_lives, size_t score, int food_to_eat );
 
 /// Prints the game itself (maze+snake).
-void printgame();
+void printgame( );
+
+/// Prints the next level screen
+void printnextlevel( );
 
 /// Prints the end game screens (crashing into a wall, losing all lives)
 void printendgame( int score );
