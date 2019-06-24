@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <utility>
+#include <set>
 #include <deque>
 #include <random>
 #include <cstdlib>
@@ -25,7 +26,7 @@ class Player
 	public:
 		std::pair< int, int > food_pos; //!< Stores the food pellet's position on the level;
 		std::pair< int, int > player_loc; //!< Stores the snake's head position
-		
+
 		Player()
 		{
 			player_loc.first = snake.head->x;
@@ -45,7 +46,7 @@ class Player
 		//Direction next_move();
 		
 		///
-		std::pair<int, int> gen_food( Level & level );
+		void gen_food( Level & level, int l_num );
 }; // Player class
 
 #endif
