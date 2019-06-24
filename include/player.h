@@ -29,7 +29,7 @@ class Player
 
 		//=== Methods
 		/// Return true if has a valid way to food and false othewise
-		bool find_solution( void );
+		bool find_solution( std::pair< int, int > food_loc, std::pair< int, int > player_loc, char** matrix );
 
 		//Direction next_move();
 		
