@@ -2,28 +2,36 @@
 
 void Snakegame::initialize_game( int argc, char* argv[] )
 {
-	level.get_input( argc, argv );
-	printmenu(level.num_levels(), 5, 0, 10);
-	level.print_level( current_level );
+	std::cout << "entrou\n";
+
+	level->get_input( argc, argv );
+	std::cout << "entrou\n";
+
+	printmenu(level->num_levels(), 5, 0, 10);
+	std::cout << "entrou\n";
+
+	level->print_level( current_level );
+	std::cout << "entrou\n";
+
 	while(!game_over())
 	{
-		render(level);
+		render();
 	}
 }
 
-void Snakegame::process_events( Level & level, Player & player )
+void Snakegame::process_events( )
 {
-	if( player.find_solution( player.food_pos, player.player_loc, level, current_level ) )
+	if( player->find_solution( player->food_pos, player->player_loc, *level, current_level ) )
 	{
-		render(level);
+		render();
 	}
 }
 
-void Snakegame::render( Level & level )
+void Snakegame::render( )
 {	
 	system("clear");
 	printstatus(lives, score, food_eaten, 10, current_level );
-	level.print_level(current_level);
+	level->print_level(current_level);
 }
 
 bool Snakegame::game_over( )

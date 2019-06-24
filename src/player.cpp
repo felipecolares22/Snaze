@@ -2,7 +2,7 @@
 
 bool Player::find_solution( std::pair< int, int > food_loc, std::pair< int, int > player_loc, Level & level, int l_num )
 {	
-
+	std::cout << "entrou\n";
 	// cleaning deque
 	this->foodWay.clear();
 
@@ -83,6 +83,7 @@ bool Player::find_solution( std::pair< int, int > food_loc, std::pair< int, int 
 
 void Player::gen_food( Level & level, int l_num )
 {
+	std::cout << "entrou gg\n";
 	std::srand(std::time(nullptr));
 	while( level.levels[l_num].matrix[food_pos.first][food_pos.second] != ' ' )
 	{
@@ -90,4 +91,6 @@ void Player::gen_food( Level & level, int l_num )
 		food_pos.second = std::rand();
 	}
 	level.levels[l_num].matrix[food_pos.first][food_pos.second] = 'f';
+	std::cout << "entrou ggg\n";
+
 }

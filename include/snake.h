@@ -13,7 +13,7 @@
 class Snake
 {
 	private:
-		Level level;
+		Level * level;
 		struct bodypart //!< Linked list representing the snake's body
 		{
 			int x;

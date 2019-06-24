@@ -14,8 +14,8 @@ class Snakegame
 {
 	private:
 	//	Snake snake;
-		Level level;
-		Player player;
+		Level * level;
+		Player * player;
 		size_t score = 0; //!< Stores the game score
 		int current_level = 0; //!< Stores the number of the current running level.
 		int lives = 10;
@@ -25,8 +25,14 @@ class Snakegame
 	public:
 		//=== Constructors / Destructor
 		/// Default destructor
-		Snakegame( )
-		{/*Empty*/}
+		explicit Snakegame( )
+		{
+			std::cout << "opaa\n";
+			level = new Level;
+			std::cout << "opaa\n";
+			player = new Player;
+			std::cout << "opaa\n";
+		}
 
 		/// Default destructor
 		~Snakegame( )
@@ -38,10 +44,10 @@ class Snakegame
 
 		/*update();*/
 
-		void process_events( Level & level , Player & player );
+		void process_events( );
 
 		/// Prints Status + Maze + Snake
-		void render( Level & level );
+		void render( );
 
 		/// Checks if game is over, if it is, it prints the endgame screen and returns true, else returns false
 		bool game_over();

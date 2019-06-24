@@ -4,11 +4,20 @@
 /// Snake default constructor implemetation
 Snake::Snake()
 {
+	std::cout << "n sei\n";
+	level = new Level;
+	std::cout << "n sei\n";
+
 	head = new bodypart;
-	head->x = level.levels[0].spawn_point.first;
-	head->y = level.levels[0].spawn_point.second;
+	std::cout << "n sei\n";
+	head->x = level->levels[0].spawn_point.first;
+	std::cout << "n sei\n";
+	head->y = level->levels[0].spawn_point.second;
+	std::cout << "n sei\n";
 	head->next = nullptr;
+	std::cout << "n sei\n";
 	head->prev = nullptr;
+	std::cout << "n sei\n";
 
 }
 

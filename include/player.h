@@ -19,8 +19,8 @@
 class Player
 {
 	protected:
-		Level level;
-		Snake snake;
+		Level * level;
+		Snake * snake;
 		std::deque< std::pair< int, int > > foodWay; //!<  
 
 	public:
@@ -29,8 +29,14 @@ class Player
 
 		Player()
 		{
-			player_loc.first = snake.head->x;
-			player_loc.second = snake.head->y;
+			std::cout << "lalala\n";
+			level = new Level;
+			std::cout << "lalala\n";
+			snake = new Snake;
+			std::cout << "lalala\n";
+
+			player_loc.first = snake->head->x;
+			player_loc.second = snake->head->y;
 
 			food_pos.first = 0;
 			food_pos.second = 0;
