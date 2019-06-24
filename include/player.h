@@ -5,7 +5,7 @@
 #include <utility>
 #include <deque>
 
-/*! \class Level
+/*! \class Player
 	\brief Represents a level of the game.
 
 */
@@ -19,3 +19,5 @@ class Player
 		bool find_way( void );
 		
 }; // Player class
+
+#endif

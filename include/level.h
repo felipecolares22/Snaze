@@ -46,6 +46,9 @@ class Level
 
 		/// Prints the levels vector
 		void print_level( );
+
+		/// Returns the size of the vector
+		int num_levels( );
 		
 }; //Level class
 

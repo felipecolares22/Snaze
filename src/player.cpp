@@ -8,5 +8,5 @@ bool Player::find_way( void )
 	// backtracking
 	std::deque< std::queue< std::pair< int, int > > > bt_layers;
 
-	return true
+	return true;
 }

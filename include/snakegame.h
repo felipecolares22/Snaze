@@ -3,7 +3,8 @@
 
 //#include "snake.h"
 #include "level.h"
-// #include "player.h"
+#include "prints.h"
+#include "player.h"
 
 /*! \class Snakegame
 	\brief The main entity that instatiates all other objects and manages the game execution.
@@ -14,7 +15,8 @@ class Snakegame
 	private:
 	//	Snake snake;
 		Level level;
-		// Player player;
+		Player player;
+		size_t score = 0; //!< Stores the game score
 
 	public:
 		//=== Constructors / Destructor
@@ -27,6 +29,7 @@ class Snakegame
 		{/*Empty*/}
 
 		//=== Methods
+		/// Initializes the game
 		void initialize_game(int argc, char* argv[]);
 
 		/*update();*/
@@ -35,9 +38,9 @@ class Snakegame
 
 		/*renders();*/
 
-		/*game_over();*/
+		void game_over();
 
 
-};
+};// Snakegame class
 
 #endif

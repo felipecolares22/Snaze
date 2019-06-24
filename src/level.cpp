@@ -74,10 +74,8 @@ void Level::get_level( std::string file_name )
 		}
 		else
 		{
-			/*
-			print_errors("invalid level size", );
-			delete aux;
-			*/
+			throw std::runtime_error( "invalid level size" );
+			//delete aux;
 		}
 	}
 }
@@ -98,4 +96,9 @@ void Level::print_level( )
 		}
 		std::cout<< std::endl;
 	}
+}
+
+int Level::num_levels( )
+{
+	return levels.size();
 }
