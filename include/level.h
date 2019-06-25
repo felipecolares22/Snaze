@@ -1,4 +1,5 @@
 #ifndef LEVEL_H
+
 #define LEVEL_H
 
 #include <iostream> //std::cout & std::cin
@@ -47,11 +48,6 @@ class Level
 
 		/// Prints the levels vector
 		void print_level( int a = -1 );
-
-		/// Returns the size of the vector
-		int num_levels( );
-
-
 		
 }; //Level class
 

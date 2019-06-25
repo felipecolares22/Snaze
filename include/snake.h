@@ -2,6 +2,9 @@
 #define SNAKE_H
 
 #include <iostream>
+#include <utility>
+#include <set>
+#include <deque>
 
 #include "level.h"
 #include "prints.h"
@@ -13,7 +16,6 @@
 class Snake
 {
 	private:
-		Level * level;
 		struct bodypart //!< Linked list representing the snake's body
 		{
 			int x;
@@ -23,11 +25,12 @@ class Snake
 		};
 
 	public:
+		size_t size=1;
 		bodypart* head; //!< Pointer to the Snake's head.
 		
 		//=== Constructors/Destructors
 		/// Default constructor.
-		Snake();
+		Snake( );
 
 		/// Default destructor.
 		~Snake( );
@@ -36,6 +39,11 @@ class Snake
 		/// Adds a new piece to the snake body.
 		void grow_snake( );
 		
+		/// Sets the head spawn point
+		void set_spawn(	std::pair< int, int > spawn );
+
+		/// Moves the Snake
+		void move_snake( std::deque< std::pair< int, int > > & foodWay, int step );
 }; //Snake class
 
 #endif

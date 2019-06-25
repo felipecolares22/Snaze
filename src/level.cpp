@@ -111,8 +111,3 @@ void Level::print_level( int a )
 		}
 	}
 }
-
-int Level::num_levels( )
-{
-	return levels.size();
-}

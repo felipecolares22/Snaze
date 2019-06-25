@@ -18,41 +18,29 @@
 */
 class Player
 {
-	protected:
-		Level * level;
-		Snake * snake;
+	public:
 		std::deque< std::pair< int, int > > foodWay; //!<  
 
 	public:
-		std::pair< int, int > food_pos; //!< Stores the food pellet's position on the level;
 		std::pair< int, int > player_loc; //!< Stores the snake's head position
 
 		Player()
-		{
-			std::cout << "lalala\n";
-			level = new Level;
-			std::cout << "lalala\n";
-			snake = new Snake;
-			std::cout << "lalala\n";
-
-			player_loc.first = snake->head->x;
-			player_loc.second = snake->head->y;
-
-			food_pos.first = 0;
-			food_pos.second = 0;
-		}
+		{/*Empty*/}
 
 		~Player()
 		{/*Empty*/}
 
 		//=== Methods
 		/// Return true if has a valid way to food and false othewise
-		bool find_solution( std::pair< int, int > food_loc, std::pair< int, int > player_loc, Level & level, int l_num );
+		bool find_solution( std::pair< int, int > food_loc, std::pair< int, int > player_loc, Level* &level, int l_num );
+
+		void set_loc(Snake* & snake)
+		{
+			player_loc.first = snake->head->x;
+			player_loc.second = snake->head->y;
+		}
 
 		//Direction next_move();
-		
-		///
-		void gen_food( Level & level, int l_num );
 }; // Player class
 
 #endif
