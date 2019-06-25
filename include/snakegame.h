@@ -5,6 +5,7 @@
 #include "level.h"
 #include "prints.h"
 #include "player.h"
+#include <random>
 
 /*! \class Snakegame
 	\brief The main entity that instatiates all other objects and manages the game execution.
@@ -27,7 +28,7 @@ class Snakegame
 		{
 			std::random_device dev;
 			std::mt19937 rng( dev() );
-			std::uniform_int_distribution<std::mt19937::result_type> dist6( 1, level->levels[current_level].dimensions.first );
+			std::uniform_int_distribution<std::mt19937::result_type> dist6( 1, level->levels[0].dimensions.first );
 			return dist6(rng);
 		}
 
@@ -35,7 +36,7 @@ class Snakegame
 		{
 			std::random_device dev;
 			std::mt19937 rng( dev() );
-			std::uniform_int_distribution<std::mt19937::result_type> dist6( 1, level->levels[current_level].dimensions.second );
+			std::uniform_int_distribution<std::mt19937::result_type> dist6( 1, level->levels[0].dimensions.second );
 			return dist6(rng);
 		}
 

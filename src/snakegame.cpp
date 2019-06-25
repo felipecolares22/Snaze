@@ -15,15 +15,15 @@ void Snakegame::initialize_game( int argc, char* argv[] )
 		level->levels[i].matrix[snake->head.first][snake->head.second] = 'G';
 		gen_food( );
 
-		// while(!game_over())
-		// {
+		for( int jonas = 0; jonas < 10; jonas++)
+		{
 			player->find_solution( food_pos, snake->head, level, current_level );
 			int num = player->foodWay.size();
 
 			// print
 			for(int ii = 0; ii < num ; ii++)
 			{
-				printstatus(lives, score, food_eaten, 10, current_level );
+				printstatus(lives, score, jonas, 10, current_level );
 				for( int a = 0; a < level->levels[i].dimensions.first ; a++ )
 				{
 					for( int b = 0; b < level->levels[i].dimensions.first ; b++ )
@@ -39,7 +39,25 @@ void Snakegame::initialize_game( int argc, char* argv[] )
 				level->levels[i].matrix[snake->head.first][snake->head.second] = 'G';
 			}
 
-		// }
+			// printstatus(lives, score, jonas + 1, 10, current_level );
+			// for( int a = 0; a < level->levels[i].dimensions.first ; a++ )
+			// {
+			// 	for( int b = 0; b < level->levels[i].dimensions.first ; b++ )
+			// 	{
+			// 		std::cout << level->levels[i].matrix[a][b];
+			// 	}
+			// 	std::cout << std::endl;
+			// }
+
+			// // atualizar
+			// level->levels[i].matrix[snake->head.first][snake->head.second] = ' ';
+			// snake->move_snake( player->foodWay, i );
+			// level->levels[i].matrix[snake->head.first][snake->head.second] = 'G';
+
+			gen_food( );
+			char a;
+			a = std::getchar();
+		}
 		std::cout << " ================ W  I  N =============== \n";
 
 		current_level++;
@@ -128,13 +146,12 @@ void Snakegame::gen_food( )
 {
 	food_pos.first = random_numbers_x();
 	food_pos.second = random_numbers_y();
-	while( level->levels[current_level].matrix[food_pos.first][food_pos.second] != ' ' )
+	while( level->levels[0].matrix[food_pos.first][food_pos.second] != ' ' )
 	{
 		food_pos.first = random_numbers_x();
 		food_pos.second = random_numbers_y();
 	}
-	std::cout << "------v\n";
+
 	level->levels[current_level].matrix[food_pos.first][food_pos.second] = 'f';
-	std::cout << "------^\n";
 }
 
