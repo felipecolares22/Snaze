@@ -23,7 +23,7 @@ void Snakegame::initialize_game( int argc, char* argv[] )
 			// print
 			for(int ii = 0; ii < num ; ii++)
 			{
-				printmenu(level->levels.size(), 5, 0, 10);
+				printstatus(lives, score, food_eaten, 10, current_level );
 				for( int a = 0; a < level->levels[i].dimensions.first ; a++ )
 				{
 					for( int b = 0; b < level->levels[i].dimensions.first ; b++ )
@@ -33,7 +33,6 @@ void Snakegame::initialize_game( int argc, char* argv[] )
 					std::cout << std::endl;
 				}
 
-
 				// atualizar
 				level->levels[i].matrix[snake->head.first][snake->head.second] = ' ';
 				snake->move_snake( player->foodWay, i );
@@ -41,6 +40,7 @@ void Snakegame::initialize_game( int argc, char* argv[] )
 			}
 
 		// }
+		std::cout << " ================ W  I  N =============== \n";
 
 		current_level++;
 	}
