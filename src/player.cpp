@@ -12,6 +12,8 @@ bool Player::find_solution( std::pair< int, int > food_loc, std::pair< int, int 
 	this->foodWay.push_back( std::make_pair(player_loc.first, player_loc.second) );
 	std::pair< int, int > current (player_loc.first, player_loc.second);
 	visited.insert( current );
+	std::cout << "entrou\n";
+	
 
 	while( this->foodWay.back() != food_loc and this->foodWay.empty() == false )
 	{
@@ -77,6 +79,6 @@ bool Player::find_solution( std::pair< int, int > food_loc, std::pair< int, int 
 			return false;
 		current = this->foodWay.back();
 	}
-	
+	std::cout << "saiu";
 	return true;
 }

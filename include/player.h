@@ -36,8 +36,7 @@ class Player
 
 		void set_loc(Snake* & snake)
 		{
-			player_loc.first = snake->head->x;
-			player_loc.second = snake->head->y;
+			player_loc = snake->head;
 		}
 
 		//Direction next_move();

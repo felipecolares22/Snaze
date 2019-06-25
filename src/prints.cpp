@@ -15,19 +15,19 @@ void printstatus( int lives, size_t score, int food_eaten, int food_to_eat, int 
 /// Prints the game main menu.
 void printmenu( int loaded_levels, int starting_lives, size_t score, int food_to_eat )
 {
-	system("clear");
+	// system("clear");
 	struct winsize size;
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
 
 	std::cout<< std::setw( (size.ws_col-43)/2 ) << std::setfill(' ') << "" << "---> Welcome to the classic Snake Game <---" << std::endl
-			 << std::setw( (size.ws_col-25)/2 ) << std::setfill(' ') << "" << "copyright DIMap/UFRN 2017" << std::endl
+			 << std::setw( (size.ws_col-25)/2 ) << std::setfill(' ') << "" << "copyright DIMap/UFRN 2019" << std::endl
 			 << std::setw( size.ws_col) << std::setfill('-') << "" << std::endl
 			 << std::setw( (size.ws_col-54)/2 ) << std::setfill(' ') << "" << "Levels Loaded: " << loaded_levels << " | Snake lives: " << starting_lives << " | Apples to eat: " << food_to_eat << std::endl
 			 << std::setw( (size.ws_col-46)/2 ) << std::setfill(' ') << "" << "Clear all levels to win the game. Good Luck!!!" << std::endl
 			 << std::setw( (size.ws_col-40)/2 ) << std::setfill(' ') << "" << ">>> Press <ENTER> to start the game! <<<" << std::endl;
 	printstatus(starting_lives, score, 0, food_to_eat, 1);
 	getchar();
-	system("clear");
+	// system("clear");
 }
 
 /// Prints the game itself (maze+snake).
@@ -35,7 +35,7 @@ void printgame();
 
 void printnextlevel( int score )
 {
-	system("clear");
+	// system("clear");
 	struct winsize size;
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
 
@@ -47,13 +47,13 @@ void printnextlevel( int score )
 	std::cout<< std::setw( (size.ws_col-11) / 2 ) << std::setfill(' ') << "" << "Score: " << score << std::endl;
 	std::cout<< std::setw( (size.ws_col-43) / 2 ) << std::setfill(' ') << "" << ">>> Press enter to start the next level <<<" << score << std::endl;
 	getchar();
-	system("clear");
+	// system("clear");
 }
 
 /// Prints the end game screens (crashing into a wall, losing all lives)
 void printendgame( int score )
 {
-	system("clear");
+	// system("clear");
 	struct winsize size;
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
 
@@ -64,6 +64,6 @@ void printendgame( int score )
 	std::cout<< std::setw( (size.ws_col-16) / 2 ) << std::setfill(' ') << "" << ">>> END GAME <<<\n";
 	std::cout<< std::setw( (size.ws_col-17) / 2 ) << std::setfill(' ') << "" << "Final score: " << score << std::endl;
 	getchar();
-	system("clear");
+	// system("clear");
 }
 

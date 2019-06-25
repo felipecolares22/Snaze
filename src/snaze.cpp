@@ -6,14 +6,11 @@
 
 int main( int argc, char* argv[] )
 {
-	std::cout << "entrou\n";
-
 	if( argc == 1 )
 	{
 		throw std::runtime_error( "Invalid Number of Arguments\n" );
 	}
-	std::cout << "entrou\n";
-
+	
 	Snakegame manager;
 
 	manager.initialize_game( argc, argv );

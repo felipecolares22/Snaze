@@ -5,6 +5,7 @@
 #include <utility>
 #include <set>
 #include <deque>
+#include <vector>
 
 #include "level.h"
 #include "prints.h"
@@ -15,18 +16,12 @@
 */
 class Snake
 {
-	private:
-		struct bodypart //!< Linked list representing the snake's body
-		{
-			int x;
-			int y;
-			bodypart* next;
-			bodypart* prev;
-		};
-
 	public:
+		// std::deque<std::pair<int, int>> body;
+		std::pair<int, int> head;
+
+	
 		size_t size=1;
-		bodypart* head; //!< Pointer to the Snake's head.
 		
 		//=== Constructors/Destructors
 		/// Default constructor.

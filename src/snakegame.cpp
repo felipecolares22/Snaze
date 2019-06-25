@@ -9,19 +9,46 @@ void Snakegame::initialize_game( int argc, char* argv[] )
 
 	for( int i = 0; i< (int)level->levels.size() ; i++)
 	{
+		// colocar bobrinha na matriz;
 		snake->set_spawn(level->levels[i].spawn_point);
 
-		while(!game_over())
-		{
-			process_events();
-		}
+		level->levels[i].matrix[snake->head.first][snake->head.second] = 'G';
+		gen_food( );
+
+		// while(!game_over())
+		// {
+			player->find_solution( food_pos, snake->head, level, current_level );
+			int num = player->foodWay.size();
+
+			// print
+			for(int ii = 0; ii < num ; ii++)
+			{
+				printmenu(level->levels.size(), 5, 0, 10);
+				for( int a = 0; a < level->levels[i].dimensions.first ; a++ )
+				{
+					for( int b = 0; b < level->levels[i].dimensions.first ; b++ )
+					{
+						std::cout << level->levels[i].matrix[a][b];
+					}
+					std::cout << std::endl;
+				}
+
+
+				// atualizar
+				level->levels[i].matrix[snake->head.first][snake->head.second] = ' ';
+				snake->move_snake( player->foodWay, i );
+				level->levels[i].matrix[snake->head.first][snake->head.second] = 'G';
+			}
+
+		// }
+
 		current_level++;
 	}
 }
 
 void Snakegame::process_events( )
 {
-	if(snake->head->x == food_pos.first and snake->head->y == food_pos.second)
+	if(snake->head.first == food_pos.first and snake->head.second == food_pos.second)
 	{
 		snake->grow_snake();
 		render();
@@ -32,7 +59,7 @@ void Snakegame::process_events( )
 	{
 		if( player->find_solution( food_pos, player->player_loc, level, current_level ) )
 		{
-			while(snake->head->x != food_pos.first and snake->head->y != food_pos.second)
+			while(snake->head.first != food_pos.first and snake->head.second != food_pos.second)
 			{
 				int step = 0;
 				redraw(step);
@@ -52,12 +79,14 @@ void Snakegame::redraw( int step )
 	std::cout<<"pegaporra\n";
 	level->levels[current_level].matrix[food_pos.first][food_pos.second] = 'f';
 
+	level->print_level(0);
+
 	if(snake->size == 1)
 	{
 		if(step == 0)
 		{
 			level->levels[current_level].matrix[player->foodWay[step].first][player->foodWay[step].second] = 'G';
-			level->levels[current_level].matrix[snake->head->x][snake->head->y] = ' ';
+			level->levels[current_level].matrix[snake->head.first][snake->head.second] = ' ';
 		}
 	}
 	else
@@ -65,29 +94,19 @@ void Snakegame::redraw( int step )
 		if(step == 0)
 		{
 			level->levels[current_level].matrix[player->foodWay[step].first][player->foodWay[step].second] = 'G';
-			level->levels[current_level].matrix[snake->head->x][snake->head->y] = 'o';
+			level->levels[current_level].matrix[snake->head.first][snake->head.second] = 'o';
 		}
 		else
 		{
 			level->levels[current_level].matrix[player->foodWay[step].first][player->foodWay[step].second] = 'G';
-			level->levels[current_level].matrix[snake->head->x][snake->head->y] = 'o';
-			while(snake->head->next != nullptr)
-			{
-				snake->head = snake->head->next;
-			}
-			level->levels[current_level].matrix[snake->head->x][snake->head->y] = ' ';
-
-			while(snake->head->prev != nullptr)
-			{
-				snake->head = snake->head->prev;
-			}		
+			level->levels[current_level].matrix[snake->head.first][snake->head.second] = 'o';	
 		}
 	}
 }
 
 void Snakegame::render( )
 {	
-	system("clear");
+	// system("clear");
 	printstatus(lives, score, food_eaten, 10, current_level );
 	level->print_level(current_level);
 }
@@ -107,11 +126,15 @@ bool Snakegame::game_over( )
 
 void Snakegame::gen_food( )
 {
+	food_pos.first = random_numbers_x();
+	food_pos.second = random_numbers_y();
 	while( level->levels[current_level].matrix[food_pos.first][food_pos.second] != ' ' )
 	{
 		food_pos.first = random_numbers_x();
 		food_pos.second = random_numbers_y();
 	}
+	std::cout << "------v\n";
 	level->levels[current_level].matrix[food_pos.first][food_pos.second] = 'f';
+	std::cout << "------^\n";
 }
 
